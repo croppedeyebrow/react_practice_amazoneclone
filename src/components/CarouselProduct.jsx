@@ -6,9 +6,9 @@ import "swiper/css/navigation";
 
 const CarouselProduct = () => {
   return (
-    <div>
+    <div className="bg-white m-3">
       <Swiper
-        slidesPerView={5}
+        slidesPerView={7}
         spaceBetween={10}
         navigation={true}
         modules={[Navigation]}
