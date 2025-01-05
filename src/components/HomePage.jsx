@@ -1,12 +1,12 @@
-import { Carousel, HomePageCard } from "./";
+import { Carousel, HomePageCard, CarouselCategory, CarouselProduct } from "./";
 
 const HomePage = () => {
   return (
     <div className="bg-amazonclone-background">
-      <div className="min-w-[800px] max-w-[1920px] m-auto bg-purple-600">
+      <div className="min-w-[800px] max-w-[1920px] m-auto">
         TopBAR
         <Carousel />
-        <div className="grid grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-3 xl:grid-cols-4 -mt-80">
           <HomePageCard
             title={"We have a surprise for you"}
             img={"/images/home_grid_1.jpg"}
@@ -54,7 +54,17 @@ const HomePage = () => {
             img={"/images/home_grid_8.jpg"}
             link={"Learn more"}
           />
+
+          <div className="m-3 pt-8">
+            <img
+              className="xl:hidden"
+              src={"/images/banner_image_2.jpg"}
+              alt="배너사진"
+            />
+          </div>
         </div>
+        <CarouselProduct />
+        <CarouselCategory />
       </div>
     </div>
   );
