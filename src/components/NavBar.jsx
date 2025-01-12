@@ -1,4 +1,4 @@
-import React from "react";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const NavBar = () => {
   return (
@@ -31,7 +31,9 @@ const NavBar = () => {
           <div className="pr-4 pl-4">
             <div className="text-xs xl:text-sm">Return</div>
             <div className="text-sm xl:text-base font-bold">& Orders</div>
-            <div className="flex pr-3 pl-3"></div>
+            <div className="flex pr-3 pl-3">
+              <ShoppingCartIcon />
+            </div>
           </div>
         </div>
       </div>
