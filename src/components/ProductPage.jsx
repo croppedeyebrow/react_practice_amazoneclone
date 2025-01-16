@@ -35,10 +35,29 @@ const ProductPage = () => {
               <div className="mb-3">
                 <ProductDetails product={product} ratings={true} />
               </div>
-              <div></div>
+              <div className="text-base xl:text-lg mt-3">
+                {product.description}
+              </div>
             </div>
             {/* 오 */}
-            <div className="col-span-2 bg-green-500"></div>
+            <div className="col-span-2 p-4 rounded bg-white">
+              <div>{product.price}</div>
+              <div>{product.oldPrice}</div>
+              <div>FREE Returns</div>
+              <div>FREE Delivery</div>
+              <div>In Stock</div>
+              <div>
+                Quantity :
+                <select>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <button>Add to Cart</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
