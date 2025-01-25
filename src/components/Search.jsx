@@ -1,6 +1,7 @@
 import React from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 import { callAPI } from "../utils/CallApi";
 
@@ -17,6 +18,22 @@ const categories = [
 const Search = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [category, setCategory] = useState("All");
+  const navigate = useNavigate();
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    console.log(category, searchTerm);
+
+    navigate({
+      pathname: "/search",
+      search: `${createSearchParams({
+        category: `${category}`,
+        searchTerm: `${searchTerm}`,
+      })}`,
+    });
+    setSearchTerm("");
+    setCategory("All");
+  };
 
   const getSuggestions = () => {
     callAPI(`data/suggestions.json`).then((suggestionResults) => {
@@ -31,7 +48,10 @@ const Search = () => {
   return (
     <div className="w-[100%]">
       <div className="flex items-center h-10 bg-amazonclone-yellow rounded">
-        <select className="p-2 bg-gray-300 text-black border text-xs xl:text-sm">
+        <select
+          onChange={(e) => setCategory(e.target.value)}
+          className="p-2 bg-gray-300 text-black border text-xs xl:text-sm"
+        >
           {categories.map((category) => (
             <option key={category}>{category}</option>
           ))}
@@ -42,7 +62,7 @@ const Search = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="w-[46px]">
+        <button onClick={onHandleSubmit} className="w-[46px]">
           <MagnifyingGlassIcon className="h-[28px] m-auto stroke-slate-900" />
         </button>
       </div>
@@ -60,7 +80,12 @@ const Search = () => {
             })
             .slice(0, 10)
             .map((suggestion) => (
-              <div key={suggestion.id}>{suggestion.title}</div>
+              <div
+                key={suggestion.id}
+                onClick={() => setSearchTerm(suggestion.title)}
+              >
+                {suggestion.title}
+              </div>
             ))}
         </div>
       )}
