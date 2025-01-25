@@ -3,3 +3,6 @@
 ## Amazone 클론
 
 ##React + Tailwind CSS & Redux
+
+++ react-redux
+++ @reduxjs/toolkit
